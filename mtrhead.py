@@ -9,8 +9,8 @@ def tCalculaPrimo(data):
             primos += 1
     return primos
 
-def resolve_trhread(data):
-    ThreadsQtdd = 5
+def resolve_trhread(data, thread_num):
+    ThreadsQtdd = thread_num
     tamanholista = len(data)
     index = range(0, tamanholista+(tamanholista//ThreadsQtdd), tamanholista//ThreadsQtdd)
     primos = 0
