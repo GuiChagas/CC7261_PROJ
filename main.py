@@ -15,7 +15,7 @@ def main():
     thread_num = 5
     data = openFile()
 
-    for i in range(3):
+    for i in range(10):
         execThread(data, thread_num)
         thread_num += 5
 
@@ -68,12 +68,14 @@ def execThread(data, thread_num):
             
 
         speedUp = (statistics.mean(simple_speed_array) / statistics.mean(thread_speed_array))
+        fracaoSerial = ((100 * thread_num) / speedUp) / thread_num - 1
         speedupForThread[thread_num] = speedUp 
         
         print('simples          > threads = %d' % thread_num)
         print('%f ms   > %f ms  : tempo execucao' % (statistics.mean(simple_time_array), statistics.mean(thread_time_array)))
         print('%d            > %d           :numeros primos encontrados' % (primo_sp,primo_mt))
         print('speedUp= %f' % speedUp)
+        print('fração serial= %f' % fracaoSerial)
         
         #GRAPH tempo de exec
         # fig, ax = plt.subplots()
@@ -81,8 +83,7 @@ def execThread(data, thread_num):
         # ax.plot(thread_time_array, label= 'time thread')
         # plt.show()
 
-
-
+        break
 
         if statistics.mean(simple_time_array) < statistics.mean(thread_time_array):
             break
