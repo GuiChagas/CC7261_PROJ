@@ -20,9 +20,9 @@ def main():
         thread_num += 5
 
     #GRAPH speedUp
-    # fig, ax = plt.subplots()
-    # ax.plot(speedupForThread.keys(), speedupForThread.values())
-    # plt.show()
+     fig, ax = plt.subplots()
+     ax.plot(speedupForThread.keys(), speedupForThread.values())
+     plt.show()
 
 def openFile():
     with open("data1.csv") as file:
@@ -68,7 +68,7 @@ def execThread(data, thread_num):
             
 
         speedUp = (statistics.mean(simple_speed_array) / statistics.mean(thread_speed_array))
-        fracaoSerial = ((100 * thread_num) / speedUp) / thread_num - 1
+        fracaoSerial = ((100 * thread_num) / speedUp) / (thread_num - 1)
         speedupForThread[thread_num] = speedUp 
         
         print('simples          > threads = %d' % thread_num)
@@ -78,10 +78,10 @@ def execThread(data, thread_num):
         print('fração serial= %f' % fracaoSerial)
         
         #GRAPH tempo de exec
-        # fig, ax = plt.subplots()
-        # ax.plot(simple_time_array, label='time simple')
-        # ax.plot(thread_time_array, label= 'time thread')
-        # plt.show()
+         fig, ax = plt.subplots()
+         ax.plot(simple_time_array, label='time simple')
+         ax.plot(thread_time_array, label= 'time thread')
+         plt.show()
 
         break
 
